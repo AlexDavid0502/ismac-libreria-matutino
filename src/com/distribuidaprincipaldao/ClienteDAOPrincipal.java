@@ -31,9 +31,10 @@ public class ClienteDAOPrincipal {
 			// TODO: handle exception
 			e.printStackTrace();
 		}		
+		
+		
 		// delete
 		//clienteDAO.del(39);
-		
 		
 		
 		//findAll
