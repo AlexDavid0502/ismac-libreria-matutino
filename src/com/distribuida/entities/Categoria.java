@@ -1,15 +1,28 @@
 package com.distribuida.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "categoria")
 public class Categoria {
 	
 	// Atributos
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_categoria")
 	private int idCategoria;
+	@Column(name = "categoria")
 	private String categoria;
+	@Column(name = "descripcion")
 	private String descripcion;
-	
+		
 	// Constructores
-	
+		
 	public Categoria() {}
 
 	public Categoria(int idCategoria, String categoria, String descripcion) {
@@ -18,6 +31,8 @@ public class Categoria {
 		this.categoria = categoria;
 		this.descripcion = descripcion;
 	}
+	
+	// Metodos getters and setters
 
 	public int getIdCategoria() {
 		return idCategoria;
@@ -42,6 +57,9 @@ public class Categoria {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	
+	
 
 	@Override
 	public String toString() {
@@ -55,8 +73,5 @@ public class Categoria {
 	
 	
 	
-	
-	
-	
-	
+
 }
