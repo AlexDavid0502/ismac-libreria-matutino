@@ -2,25 +2,63 @@ package com.distribuida.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "libro")
 public class Libro {
 	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_libro")
 	private int idLibro;
+	@Column(name = "titulo")
 	private String titulo;
+	@Column(name = "editorial")
 	private String editorial;
+	@Column(name = "num_paginas")
 	private int numPaginas;
+	@Column(name = "edicion")
 	private String edicion;
+	@Column(name = "idioma")
 	private String idioma;
+	@Column(name = "fecha_publicacion")
 	private Date fechaPublicacion;
+	@Column(name = "descripcion")
 	private String descripcion;
+	@Column(name = "tipo_pasta")
 	private String tipoPasta;
+	@Column(name = "iSBN")
 	private String iSBN;
+	@Column(name = "num_ejemplares")
 	private int numEjemplares;
+	@Column(name = "portada")
 	private String portada;
+	@Column(name = "presentacion")
 	private String presentacion;
+	@Column(name = "precio")
 	private Double precio;
+	
+	//private int id_categoria
+	@JoinColumn (name= "id_categoria")
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	private Categoria categoria;
+	//private int id_autor
+	@JoinColumn (name= "id_autor")
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	private Autor autor;
 	
+	
+	//Constructores
 	
 	public Libro() {}
 
@@ -46,7 +84,8 @@ public class Libro {
 		this.categoria = categoria;
 		this.autor = autor;
 	}
-
+	
+	// Metodos getters and setters
 
 	public int getIdLibro() {
 		return idLibro;
@@ -192,7 +231,8 @@ public class Libro {
 		return categoria;
 	}
 
-
+	
+	// metodo inyector
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
@@ -202,10 +242,12 @@ public class Libro {
 		return autor;
 	}
 
-
+	// metodo inyector
 	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
+	
+	
 
 
 	@Override
@@ -216,12 +258,6 @@ public class Libro {
 				+ numEjemplares + ", portada=" + portada + ", presentacion=" + presentacion + ", precio=" + precio
 				+ ", categoria=" + categoria + ", autor=" + autor + "]";
 	}
-	
-	
-	
-	
-
-	
 	
 	
 	
